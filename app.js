@@ -1321,13 +1321,32 @@
       });
     });
 
+    const recenterSlider = () => {
+      cancelAnimation();
+      requestAnimationFrame(() => {
+        setX(targetFor(index));
+        updateVisualState();
+      });
+    };
+
     let resizeTimer = 0;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        cancelAnimation();
-        setX(targetFor(index));
-      }, 80);
+      resizeTimer = setTimeout(recenterSlider, 80);
+    }, { passive: true });
+
+    // Mobile Chrome changes the visual viewport when its address bar shows/hides.
+    // ResizeObserver keeps the cards centered when that changes the slider width.
+    if ('ResizeObserver' in window) {
+      const sliderResizeObserver = new ResizeObserver(() => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(recenterSlider, 60);
+      });
+      sliderResizeObserver.observe(viewport);
+    }
+
+    window.addEventListener('orientationchange', () => {
+      setTimeout(recenterSlider, 180);
     }, { passive: true });
 
     requestAnimationFrame(() => {
