@@ -1363,64 +1363,32 @@
   setupAboutRail();
   setupWorkSlider();
 
-  // V18 contact actions: fire mail / phone immediately on pointer-up
-  // when the gesture was a tap/click rather than a swipe.
+  // Mobile-safe Contact actions.
+  // Do NOT stop pointerdown/pointermove propagation here: the carousel viewport
+  // needs those events so a swipe can begin even when the finger starts on the
+  // Gmail / phone / Back-to-top content. The slider's capture-phase click guard
+  // already cancels accidental clicks after a genuine swipe.
   document.querySelectorAll('[data-contact-action]').forEach((action) => {
-    let downX = 0;
-    let downY = 0;
-    let moved = false;
-
-    action.addEventListener('pointerdown', (event) => {
-      downX = event.clientX;
-      downY = event.clientY;
-      moved = false;
-
-      // V19: clicking Email / Phone / Back-to-top should never accidentally
-      // start the Contact carousel. Dragging still works from the rest of card.
-      event.stopPropagation();
-    }, { passive: true });
-
-    action.addEventListener('pointermove', (event) => {
-      // Important: do NOT stop pointermove propagation here.
-      // The global custom-cursor listener lives on window and needs this event
-      // to keep following the real mouse while it is over Email/Phone/Back-to-top.
-      if (Math.abs(event.clientX - downX) > 8 || Math.abs(event.clientY - downY) > 8) {
-        moved = true;
-      }
-    }, { passive: true });
-
-    action.addEventListener('pointerup', (event) => {
-      // Let non-activation pointerups bubble normally. The carousel was never
-      // armed because pointerdown is blocked from reaching it.
-      if (moved) return;
-
+    action.addEventListener('click', (event) => {
       if (action.matches('[data-back-to-top]')) {
         event.preventDefault();
-        event.stopPropagation();
         const home = document.getElementById('home');
-        if (home) home.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-        else window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        if (home) {
+          home.scrollIntoView({
+            behavior: reduceMotion ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        } else {
+          window.scrollTo({
+            top: 0,
+            behavior: reduceMotion ? 'auto' : 'smooth'
+          });
+        }
         if (history.replaceState) history.replaceState(null, '', '#home');
-        return;
       }
-
-      const href = action.getAttribute('href') || '';
-      if (href.startsWith('mailto:') || href.startsWith('tel:')) {
-        event.preventDefault();
-        event.stopPropagation();
-        // Pointer-up is the earliest reliable user-gesture moment after the press,
-        // so external mail/dialer apps begin opening immediately.
-        window.location.href = href;
-      }
-    }, { passive: false });
-
-    // Prevent a second navigation from the synthetic click after pointer-up.
-    action.addEventListener('click', (event) => {
-      const href = action.getAttribute('href') || '';
-      if (action.matches('[data-back-to-top]') || href.startsWith('mailto:') || href.startsWith('tel:')) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
+      // mailto: and tel: links use their native browser behavior.
+      // If the user swiped instead of tapped, the slider suppresses this click.
     });
   });
+
 })();
