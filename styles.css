@@ -3308,3 +3308,315 @@ body.carousel-dragging .cursor-ring {
     height: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   V28 MOBILE FIX
+   - Contact details are guaranteed to render below the contact illustration.
+   - Skills/contact sliders use the actual mobile viewport width.
+   - Cards are readable and don't get clipped on the right.
+   - The section scroller becomes a compact bottom rail instead of blocking
+     content on the right edge.
+   Desktop styles remain untouched.
+   ========================================================================== */
+@media (max-width: 680px) {
+  /* Don't let inactive-section animation shove mobile content sideways. */
+  main > .portfolio-slide:nth-of-type(even):not(.is-section-active) > .section-wrap,
+  main > .portfolio-slide:nth-of-type(odd):not(.hero):not(.is-section-active) > .section-wrap {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* ---------- Mobile section navigator ---------- */
+  .section-carousel-nav {
+    position: fixed !important;
+    top: auto !important;
+    right: 50% !important;
+    bottom: 10px !important;
+    transform: translateX(50%) !important;
+    width: auto !important;
+    min-width: 188px;
+    height: 46px;
+    padding: 6px 10px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    border-radius: 999px !important;
+    z-index: 90;
+  }
+
+  .section-nav-orbit {
+    width: 26px !important;
+    height: 26px !important;
+    flex: 0 0 26px;
+  }
+
+  .section-nav-dots {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 7px !important;
+  }
+
+  .section-nav-dot {
+    width: 14px !important;
+    height: 5px !important;
+    border-radius: 999px !important;
+  }
+
+  .section-nav-dot.is-active {
+    width: 30px !important;
+    height: 5px !important;
+  }
+
+  .section-nav-meta {
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+  }
+
+  .section-nav-label {
+    display: none !important;
+  }
+
+  .section-nav-count {
+    font-size: 8px !important;
+  }
+
+  /* ---------- Skills ---------- */
+  #skills .section-wrap {
+    overflow: hidden;
+  }
+
+  .skills-main-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .skills-visual-left {
+    width: 100%;
+    min-height: 0 !important;
+  }
+
+  .skills-visual-left img {
+    width: min(100%, 390px) !important;
+    max-height: 430px !important;
+    object-fit: contain;
+  }
+
+  .skills-info-carousel {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .skills-info-carousel .carousel-hud {
+    width: 100%;
+    margin-bottom: 14px;
+    grid-template-columns: auto 1fr !important;
+  }
+
+  .skills-info-carousel .carousel-signal {
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .skills-info-carousel .carousel-progress {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .skills-swipe-viewport {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 8px 0 20px !important;
+    container-type: inline-size;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .skills-swipe-track {
+    gap: 12px !important;
+    padding-inline: 10px !important;
+  }
+
+  .skills-swipe-track .skill-group,
+  .skills-swipe-track .skill-group:nth-child(even) {
+    width: calc(100cqw - 20px) !important;
+    flex: 0 0 calc(100cqw - 20px) !important;
+    max-width: 380px !important;
+    min-width: 0 !important;
+    min-height: 245px !important;
+    padding: 24px 22px !important;
+    border-radius: 24px !important;
+  }
+
+  .skills-swipe-track .skill-node {
+    margin-bottom: 34px !important;
+    font-size: 10px;
+  }
+
+  .skills-swipe-track .skill-group h3 {
+    margin: 0 0 18px !important;
+    font-size: clamp(28px, 8vw, 34px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .skills-swipe-track .skill-group p {
+    margin: 0 !important;
+    max-width: 100% !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-section {
+    padding: 82px 20px 112px !important;
+    overflow: hidden;
+  }
+
+  .contact-heading-top {
+    margin-bottom: 28px !important;
+  }
+
+  .contact-main-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .contact-visual-left {
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 12px 12px 0 !important;
+  }
+
+  .contact-visual-left img {
+    width: min(100%, 360px) !important;
+    max-height: 430px !important;
+    object-fit: contain !important;
+  }
+
+  .contact-panel-shell {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .contact-panel-shell .carousel-hud {
+    width: 100%;
+    margin-bottom: 14px;
+    grid-template-columns: auto 1fr !important;
+  }
+
+  .contact-panel-shell .carousel-signal {
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .contact-panel-shell .carousel-progress {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .contact-swipe-viewport {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    padding: 8px 0 18px !important;
+    container-type: inline-size;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .contact-swipe-track {
+    gap: 12px !important;
+    padding-inline: 10px !important;
+  }
+
+  .contact-swipe-track .contact-item {
+    width: calc(100cqw - 20px) !important;
+    flex: 0 0 calc(100cqw - 20px) !important;
+    max-width: 380px !important;
+    min-width: 0 !important;
+    min-height: 220px !important;
+    padding: 18px !important;
+    border-radius: 24px !important;
+  }
+
+  .contact-swipe-track .contact-channel-center.contact-direct-action {
+    width: 100% !important;
+    min-height: 176px !important;
+    padding: 22px 12px 16px !important;
+    gap: 14px !important;
+  }
+
+  .contact-swipe-track .contact-label {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    margin: 0 !important;
+    z-index: 2;
+  }
+
+  .contact-swipe-track .contact-arrow {
+    top: 16px !important;
+    right: 16px !important;
+  }
+
+  .contact-channel-icon-wrap {
+    width: 62px !important;
+    height: 62px !important;
+    border-radius: 18px !important;
+  }
+
+  .contact-swipe-track .contact-channel-center strong {
+    display: block;
+    width: 100%;
+    max-width: 100% !important;
+    padding-inline: 4px;
+    font-size: clamp(14px, 4vw, 17px) !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
+  }
+
+  .contact-swipe-track .contact-navigation-center strong {
+    font-size: 24px !important;
+  }
+
+  footer {
+    padding-bottom: 76px !important;
+  }
+}
+
+/* Fallback for older browsers without container-query units. */
+@supports not (width: 100cqw) {
+  @media (max-width: 680px) {
+    .skills-swipe-track .skill-group,
+    .skills-swipe-track .skill-group:nth-child(even),
+    .contact-swipe-track .contact-item {
+      width: calc(100vw - 60px) !important;
+      flex-basis: calc(100vw - 60px) !important;
+      max-width: calc(100vw - 60px) !important;
+    }
+  }
+}
