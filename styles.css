@@ -3620,3 +3620,18 @@ body.carousel-dragging .cursor-ring {
     }
   }
 }
+
+
+/* V28 mobile swipe hotfix:
+   contact links/buttons remain clickable, but horizontal finger movement belongs
+   to the contact carousel so swiping works from anywhere inside the card. */
+@media (max-width: 680px) {
+  .contact-direct-action,
+  .contact-direct-action * {
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  .contact-swipe-viewport {
+    overscroll-behavior-x: contain;
+  }
+}
