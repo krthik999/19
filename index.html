@@ -23,8 +23,17 @@
     <a class="nav-cta" href="#contact">Let’s talk <span aria-hidden="true">↘</span></a>
   </header>
 
+  <nav class="section-carousel-nav" aria-label="Section navigation">
+    <div class="section-nav-orbit" aria-hidden="true"><span></span></div>
+    <div class="section-nav-dots" data-section-dots></div>
+    <div class="section-nav-meta">
+      <span class="section-nav-label" data-section-label>HOME</span>
+      <span class="section-nav-count"><span data-section-current>01</span><span>/06</span></span>
+    </div>
+  </nav>
+
   <main>
-    <section class="hero" id="home" aria-labelledby="hero-title">
+    <section class="hero portfolio-slide" id="home" data-slide-label="Home" aria-labelledby="hero-title">
       <div class="hero-background" aria-hidden="true"></div>
 
       <div class="character-stage" data-character aria-hidden="true">
@@ -63,17 +72,41 @@
       </a>
     </section>
 
-    <section class="section section-light" id="about">
+    <section class="section section-light portfolio-slide" id="about" data-slide-label="About">
       <div class="section-wrap reveal">
         <div class="about-grid">
           <div class="about-content">
             <p class="section-kicker">01 / About</p>
             <h2>Engineering with equal focus on <em>systems</em> and <em>experience.</em></h2>
             <p class="about-lead">I’m a software and cloud engineer focused on distributed systems, infrastructure automation, observability and practical AI. I enjoy turning complex technical requirements into products that feel simple, fast and dependable.</p>
-            <div class="metric-row" aria-label="Focus areas">
-              <div><strong>Cloud</strong><span>AWS · Azure</span></div>
-              <div><strong>Platform</strong><span>Kubernetes · IaC</span></div>
-              <div><strong>AI</strong><span>LLMs · RAG</span></div>
+            <div class="about-rail" data-about-rail aria-label="Focus areas carousel">
+              <div class="about-rail-hud">
+                <div class="carousel-status"><span data-about-current>01</span><span>/03</span></div>
+                <div class="carousel-signal"><span class="signal-pulse"></span><span>DRAG / SWIPE THE TECH RAIL</span></div>
+                <div class="about-rail-meter" data-about-meter aria-label="Choose focus area"></div>
+              </div>
+              <div class="about-rail-viewport" tabindex="0">
+                <div class="about-rail-track" data-about-track>
+                  <article class="about-rail-card" data-about-card>
+                    <span class="rail-index">01</span>
+                    <span class="rail-chip">CLOUD LAYER</span>
+                    <strong>Cloud</strong>
+                    <span>AWS · Azure</span>
+                  </article>
+                  <article class="about-rail-card" data-about-card>
+                    <span class="rail-index">02</span>
+                    <span class="rail-chip">PLATFORM LAYER</span>
+                    <strong>Platform</strong>
+                    <span>Kubernetes · IaC</span>
+                  </article>
+                  <article class="about-rail-card" data-about-card>
+                    <span class="rail-index">03</span>
+                    <span class="rail-chip">INTELLIGENCE LAYER</span>
+                    <strong>AI</strong>
+                    <span>LLMs · RAG</span>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
           <div class="section-visual-card about-visual">
@@ -83,7 +116,7 @@
       </div>
     </section>
 
-    <section class="section section-ink" id="work">
+    <section class="section section-ink portfolio-slide" id="work" data-slide-label="What I do">
       <div class="section-wrap reveal">
         <div class="section-heading-row">
           <div>
@@ -93,30 +126,42 @@
           <p class="section-intro">I work across application engineering, cloud infrastructure and the reliability layer connecting them.</p>
         </div>
 
-        <div class="capability-grid">
-          <article class="capability-card">
-            <span class="card-index">A</span>
-            <h3>Software Engineering</h3>
-            <p>C++, Python and JavaScript/TypeScript development for APIs, distributed services, automation and data-heavy applications.</p>
-            <div class="tag-row"><span>C++</span><span>Python</span><span>TypeScript</span><span>APIs</span></div>
-          </article>
-          <article class="capability-card">
-            <span class="card-index">B</span>
-            <h3>Cloud & Platform</h3>
-            <p>Cloud-native systems with Kubernetes, Docker, Terraform, CI/CD and GitOps across AWS and Azure environments.</p>
-            <div class="tag-row"><span>AWS</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span></div>
-          </article>
-          <article class="capability-card">
-            <span class="card-index">C</span>
-            <h3>AI & Data</h3>
-            <p>LLM and RAG workflows, event-driven pipelines, SQL analytics and observability designed around measurable outcomes.</p>
-            <div class="tag-row"><span>LLM</span><span>RAG</span><span>Kafka</span><span>SQL</span></div>
-          </article>
+        <div class="work-command" data-work-slider>
+          <div class="work-command-hud carousel-hud-dark">
+            <div class="carousel-status"><span data-work-current>01</span><span>/03</span></div>
+            <div class="carousel-signal"><span class="signal-pulse"></span><span>SWIPE THE COMMAND DECK</span></div>
+            <div class="work-command-meter" data-work-meter aria-label="Choose capability"></div>
+          </div>
+          <div class="work-command-viewport" tabindex="0">
+            <div class="work-command-track" data-work-track>
+              <article class="capability-card tech-card work-command-card" data-work-card data-tech-card>
+                <span class="card-index">A</span><span class="card-system">SYS.01</span>
+                <div class="command-status"><span></span> ACTIVE MODULE</div>
+                <h3>Software Engineering</h3>
+                <p>C++, Python and JavaScript/TypeScript development for APIs, distributed services, automation and data-heavy applications.</p>
+                <div class="tag-row"><span>C++</span><span>Python</span><span>TypeScript</span><span>APIs</span></div>
+              </article>
+              <article class="capability-card tech-card work-command-card" data-work-card data-tech-card>
+                <span class="card-index">B</span><span class="card-system">SYS.02</span>
+                <div class="command-status"><span></span> ACTIVE MODULE</div>
+                <h3>Cloud & Platform</h3>
+                <p>Cloud-native systems with Kubernetes, Docker, Terraform, CI/CD and GitOps across AWS and Azure environments.</p>
+                <div class="tag-row"><span>AWS</span><span>Azure</span><span>Kubernetes</span><span>Terraform</span></div>
+              </article>
+              <article class="capability-card tech-card work-command-card" data-work-card data-tech-card>
+                <span class="card-index">C</span><span class="card-system">SYS.03</span>
+                <div class="command-status"><span></span> ACTIVE MODULE</div>
+                <h3>AI & Data</h3>
+                <p>LLM and RAG workflows, event-driven pipelines, SQL analytics and observability designed around measurable outcomes.</p>
+                <div class="tag-row"><span>LLM</span><span>RAG</span><span>Kafka</span><span>SQL</span></div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-light" id="skills">
+    <section class="section section-light portfolio-slide" id="skills" data-slide-label="Toolkit">
       <div class="section-wrap reveal">
         <div class="skills-heading-top">
           <p class="section-kicker">03 / Toolkit</p>
@@ -129,45 +174,72 @@
             <img src="assets/custom/skills.png" alt="Stylized illustration of Karthik working on a laptop with AI, cloud, database, and coding symbols" draggable="false" />
           </div>
 
-          <div class="skills-columns skills-columns-right">
-            <div class="skill-group"><h3>Languages</h3><p>C++ · Python · Java · JavaScript · TypeScript · SQL · Bash</p></div>
-            <div class="skill-group"><h3>Cloud & DevOps</h3><p>AWS · Azure · Kubernetes · Docker · Terraform · CloudFormation · Helm · Argo CD · Jenkins</p></div>
-            <div class="skill-group"><h3>Data & Systems</h3><p>PostgreSQL · SQL Server · Kafka · Redis · Flink · REST APIs · Distributed systems</p></div>
-            <div class="skill-group"><h3>Observability</h3><p>Prometheus · Grafana · CloudWatch · Azure Monitor · Log Analytics · Kibana</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section education-section" id="education">
-      <div class="section-wrap reveal">
-        <div class="education-heading-top">
-          <p class="section-kicker">04 / Education</p>
-          <h2 class="education-title"><span class="education-title-normal">Graduate study in</span> <strong>Computer Science</strong> <span class="education-title-and">and</span> <strong>Information Systems.</strong></h2>
-          <p class="section-intro">My graduate studies strengthened my foundation in technology, systems thinking, and practical problem solving for modern software and data-driven environments.</p>
-        </div>
-
-        <div class="education-main-row">
-          <div class="education-list education-list-left">
-            <article class="education-card education-card-single">
-              <div class="education-year">Graduate</div>
-              <div class="education-body">
-                <p class="education-degree">Masters in Computer Science and Information Systems</p>
-                <h3>Saint Louis University</h3>
-                <p>St. Louis, Missouri</p>
+          <div class="skills-info-carousel">
+            <div class="carousel-hud">
+              <div class="carousel-status"><span data-carousel-current>01</span><span>/04</span></div>
+              <div class="carousel-signal"><span class="signal-pulse"></span><span>DRAG / SWIPE STACK</span></div>
+              <div class="carousel-progress" data-carousel-progress aria-hidden="true"></div>
+            </div>
+            <div class="smooth-swipe-viewport skills-swipe-viewport" data-smooth-slider="skills" tabindex="0" aria-label="Technology toolkit carousel">
+              <div class="smooth-swipe-track skills-swipe-track">
+                <div class="skill-group tech-card smooth-swipe-slide" data-smooth-slide data-tech-card><span class="skill-node">NODE 01</span><h3>Languages</h3><p>C++ · Python · Java · JavaScript · TypeScript · SQL · Bash</p></div>
+                <div class="skill-group tech-card smooth-swipe-slide" data-smooth-slide data-tech-card><span class="skill-node">NODE 02</span><h3>Cloud & DevOps</h3><p>AWS · Azure · Kubernetes · Docker · Terraform · CloudFormation · Helm · Argo CD · Jenkins</p></div>
+                <div class="skill-group tech-card smooth-swipe-slide" data-smooth-slide data-tech-card><span class="skill-node">NODE 03</span><h3>Data & Systems</h3><p>PostgreSQL · SQL Server · Kafka · Redis · Flink · REST APIs · Distributed systems</p></div>
+                <div class="skill-group tech-card smooth-swipe-slide" data-smooth-slide data-tech-card><span class="skill-node">NODE 04</span><h3>Observability</h3><p>Prometheus · Grafana · CloudWatch · Azure Monitor · Log Analytics · Kibana</p></div>
               </div>
-              <div class="education-mark education-logo" aria-hidden="true"><img src="assets/custom/slu-logo.png" alt="" draggable="false" /></div>
-            </article>
-          </div>
-
-          <div class="section-visual-card education-visual education-visual-right">
-            <img src="assets/custom/education.png" alt="Stylized graduation portrait of Karthik holding a diploma" draggable="false" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="section education-section portfolio-slide" id="education" data-slide-label="Education">
+      <div class="section-wrap reveal">
+        <div class="education-layout-v26">
+          <div class="education-left-v26">
+            <div class="education-heading-top">
+              <p class="section-kicker">04 / Education</p>
+              <h2 class="education-title education-title-stacked">
+                <span class="education-title-line education-title-normal">Graduate study in</span>
+                <strong class="education-title-line">Computer Science</strong>
+                <span class="education-title-line education-title-and">and</span>
+                <strong class="education-title-line">Information Systems.</strong>
+              </h2>
+              <p class="section-intro">My graduate studies strengthened my foundation in technology, systems thinking, and practical problem solving for modern software and data-driven environments.</p>
+            </div>
+
+            <div class="education-list education-list-left">
+              <article class="education-card education-card-single interactive-tech-card" data-tech-card>
+                <div class="education-year">Graduate</div>
+                <div class="education-body">
+                  <p class="education-degree">Masters in Computer Science and Information Systems</p>
+                  <h3>Saint Louis University</h3>
+                  <p>St. Louis, Missouri</p>
+                </div>
+                <div class="education-mark education-logo" aria-hidden="true"><img src="assets/custom/slu-logo.png" alt="" draggable="false" /></div>
+              </article>
+            </div>
+          </div>
+
+          <div class="section-visual-card education-visual education-visual-right education-visual-v26 education-video-card">
+            <video
+              class="education-video"
+              data-education-video
+              src="assets/custom/education-graduation.mp4"
+              poster="assets/custom/education.png"
+              muted
+              playsinline
+              preload="auto"
+              disablepictureinpicture
+              controlslist="nodownload noplaybackrate noremoteplayback"
+              aria-label="Animated graduation portrait of Karthik"
+            ></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section portfolio-slide" id="contact" data-slide-label="Contact">
       <div class="section-wrap reveal">
         <div class="contact-heading-top">
           <p class="section-kicker">05 / Contact</p>
@@ -180,22 +252,39 @@
             <img src="assets/custom/contact.png" alt="Stylized contact illustration of Karthik holding a phone with messaging and email icons" draggable="false" />
           </div>
 
-          <div class="contact-panel contact-panel-right">
-            <a class="contact-item" href="mailto:karthikreddypalkonda@gmail.com">
-              <span class="contact-label">Email</span>
-              <strong>karthikreddypalkonda@gmail.com</strong>
-              <span class="contact-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a class="contact-item" href="tel:+13143134037">
-              <span class="contact-label">Phone</span>
-              <strong>+1 (314) 313-4037</strong>
-              <span class="contact-arrow" aria-hidden="true">↗</span>
-            </a>
-            <a class="contact-item contact-back" href="#home">
-              <span class="contact-label">Navigation</span>
-              <strong>Back to the top</strong>
-              <span class="contact-arrow" aria-hidden="true">↑</span>
-            </a>
+          <div class="contact-panel-shell">
+            <div class="carousel-hud carousel-hud-contact">
+              <div class="carousel-status"><span data-carousel-current>01</span><span>/03</span></div>
+              <div class="carousel-signal"><span class="signal-pulse"></span><span>DRAG / SWIPE CONTACT</span></div>
+              <div class="carousel-progress" data-carousel-progress aria-hidden="true"></div>
+            </div>
+            <div class="smooth-swipe-viewport contact-swipe-viewport" data-smooth-slider="contact" tabindex="0" aria-label="Contact options carousel">
+              <div class="smooth-swipe-track contact-swipe-track">
+                <article class="contact-item tech-card smooth-swipe-slide contact-channel-card" data-smooth-slide data-tech-card>
+                  <span class="contact-label">Email</span>
+                  <a class="contact-channel-center contact-direct-action" data-contact-action href="mailto:karthikreddypalkonda@gmail.com" aria-label="Email Karthik Reddy">
+                    <span class="contact-channel-icon-wrap" aria-hidden="true"><img class="contact-channel-icon gmail-icon" src="assets/custom/gmail-logo.jpg" alt="" draggable="false" /></span>
+                    <strong>karthikreddypalkonda@gmail.com</strong>
+                  </a>
+                  <span class="contact-arrow" aria-hidden="true">↗</span>
+                </article>
+                <article class="contact-item tech-card smooth-swipe-slide contact-channel-card" data-smooth-slide data-tech-card>
+                  <span class="contact-label">Phone</span>
+                  <a class="contact-channel-center contact-direct-action" data-contact-action href="tel:+13143134037" aria-label="Call Karthik Reddy">
+                    <span class="contact-channel-icon-wrap" aria-hidden="true"><img class="contact-channel-icon phone-icon" src="assets/custom/phone-logo.png" alt="" draggable="false" /></span>
+                    <strong>+1 (314) 313-4037</strong>
+                  </a>
+                  <span class="contact-arrow" aria-hidden="true">↗</span>
+                </article>
+                <article class="contact-item contact-back tech-card smooth-swipe-slide" data-smooth-slide data-tech-card>
+                  <span class="contact-label">Navigation</span>
+                  <button class="contact-channel-center contact-navigation-center contact-direct-action contact-top-button" type="button" data-contact-action data-back-to-top aria-label="Back to the top">
+                    <strong>Back to the top</strong>
+                  </button>
+                  <span class="contact-arrow" aria-hidden="true">↑</span>
+                </article>
+              </div>
+            </div>
           </div>
         </div>
       </div>
